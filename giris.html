@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc lang="tr">
+<helmet>
+<link rel="stylesheet" href="_ds/organic-19b78f37-1a36-475b-8c93-106949d4418d/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Figtree:wght@400;500;600;700;800&amp;display=swap">
+<script src="_ds/organic-19b78f37-1a36-475b-8c93-106949d4418d/_ds_bundle.js"></script>
+<style>
+:root{--font-heading:"Archivo Black","Figtree",system-ui,sans-serif;--font-body:"Figtree",system-ui,sans-serif;--color-bg:#ffffff;--color-surface:#f4f7fb;--color-text:#16181c;--color-accent:#1668b8;--color-divider:color-mix(in srgb,#0e3f6e 14%,transparent)}
+body{margin:0;background:#fff;color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:#0e4577}
+</style>
+</helmet>
+<div style="background:#fff;min-height:100vh">
+  <dc-import name="SiteNav" active="" cart-count="2" hint-size="100%,72px"></dc-import>
+
+  <section style="max-width:1140px;margin:0 auto;padding:52px 24px 90px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:34px;align-items:center">
+    <div style="padding:34px;border-radius:32px;background:#eaf3fc">
+      <img src="uploads/logo.png" alt="Thick Slice" style="height:78px;width:auto">
+      <h1 style="margin:22px 0 0;font-family:var(--font-heading);font-size:34px;line-height:1.18;color:#16181c">Numaranı gir, gerisi hazır</h1>
+      <p style="margin:12px 0 22px;font-size:16px;color:#0e4577;line-height:1.6">Şifre yok, e-posta yok. Telefonuna gelen 4 haneli kodu yaz, hesabın açılır.</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="width:30px;height:30px;flex:none;border-radius:999px;background:#1668b8;color:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+          </span>
+          <span style="font-size:15px;color:#16181c;font-weight:600">Adresler kayıtlı kalır, tek tıkla sipariş</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="width:30px;height:30px;flex:none;border-radius:999px;background:#1668b8;color:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+          </span>
+          <span style="font-size:15px;color:#16181c;font-weight:600">Damgalar numarana işlenir, 10.'su bedava</span>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <span style="width:30px;height:30px;flex:none;border-radius:999px;background:#1668b8;color:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+          </span>
+          <span style="font-size:15px;color:#16181c;font-weight:600">Kuponlar hesabında birikir</span>
+        </div>
+      </div>
+      <div style="margin-top:26px;border-radius:24px;overflow:hidden;aspect-ratio:1/1">
+        <img src="https://images.pexels.com/photos/30948829/pexels-photo-30948829.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=900&amp;h=900&amp;fit=crop" alt="Kare pizza fotoğrafı" style="display:block;width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+
+    <div style="padding:32px;border-radius:32px;border:1.5px solid #e7eef5;background:#fff;box-shadow:0 12px 34px rgba(14,63,110,0.10)">
+      <div style="display:flex;background:#f4f7fb;border-radius:999px;padding:5px;gap:4px;margin-bottom:24px">
+        <sc-for list="{{ modes }}" as="m" hint-placeholder-count="2">
+          <sc-if value="{{ m.on }}" hint-placeholder-val="{{ true }}">
+            <button onClick="{{ m.pick }}" style="flex:1;padding:12px;border-radius:999px;border:0;background:#16181c;color:#fff;font-family:var(--font-heading);font-size:16px;cursor:pointer">{{ m.label }}</button>
+          </sc-if>
+          <sc-if value="{{ m.off }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ m.pick }}" style="flex:1;padding:12px;border-radius:999px;border:0;background:transparent;color:#5b6774;font-size:16px;font-weight:600;cursor:pointer" style-hover="color:#16181c">{{ m.label }}</button>
+          </sc-if>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ stepPhone }}" hint-placeholder-val="{{ true }}">
+        <div style="font-family:var(--font-heading);font-size:26px;color:#16181c">{{ title }}</div>
+        <p style="margin:8px 0 20px;font-size:15px;color:#5b6774">{{ subtitle }}</p>
+        <sc-if value="{{ isSignup }}" hint-placeholder-val="{{ false }}">
+          <input class="input" value="{{ name }}" onInput="{{ onName }}" placeholder="Adın" style="width:100%;box-sizing:border-box;margin-bottom:12px;border-radius:999px;background:#f4f7fb;border:1.5px solid #dbe4ee;padding:15px 20px;font-size:16px">
+        </sc-if>
+        <input class="input" value="{{ phone }}" onInput="{{ onPhone }}" placeholder="05xx xxx xx xx" style="width:100%;box-sizing:border-box;border-radius:999px;background:#f4f7fb;border:1.5px solid #dbe4ee;padding:15px 20px;font-size:16px">
+        <sc-if value="{{ canSend }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ sendCode }}" style="width:100%;margin-top:14px;padding:16px;border-radius:999px;border:0;background:#1668b8;color:#fff;font-family:var(--font-heading);font-size:17px;cursor:pointer;box-shadow:0 3px 0 #0e4577" style-hover="background:#12579b">Kod gönder</button>
+        </sc-if>
+        <sc-if value="{{ cannotSend }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:14px;padding:16px;border-radius:999px;background:#f4f7fb;color:#8d9aa8;font-family:var(--font-heading);font-size:17px;text-align:center">Numaranı yaz</div>
+        </sc-if>
+        <p style="margin:18px 0 0;font-size:13px;color:#8d9aa8;line-height:1.6">Devam edince <a href="iletisim.html">kullanım koşullarını</a> ve <a href="iletisim.html">KVKK aydınlatma metnini</a> kabul ediyorsun.</p>
+      </sc-if>
+
+      <sc-if value="{{ stepCode }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:var(--font-heading);font-size:26px;color:#16181c">Kodu yaz</div>
+        <p style="margin:8px 0 20px;font-size:15px;color:#5b6774">{{ phone }} numarasına 4 haneli doğrulama kodu gönderdik.</p>
+        <input class="input" value="{{ code }}" onInput="{{ onCode }}" placeholder="1 2 3 4" style="width:100%;box-sizing:border-box;border-radius:999px;background:#f4f7fb;border:1.5px solid #dbe4ee;padding:16px 20px;font-size:24px;letter-spacing:0.4em;text-align:center;font-family:var(--font-heading)">
+        <button onClick="{{ verify }}" style="width:100%;margin-top:14px;padding:16px;border-radius:999px;border:0;background:#1668b8;color:#fff;font-family:var(--font-heading);font-size:17px;cursor:pointer;box-shadow:0 3px 0 #0e4577" style-hover="background:#12579b">Doğrula ve gir</button>
+        <sc-if value="{{ codeErr }}" hint-placeholder-val="{{ false }}">
+          <div style="margin-top:12px;padding:12px 16px;border-radius:16px;background:#fff2eb;font-size:14px;color:#643312">Kod 4 haneli olmalı, tekrar dene.</div>
+        </sc-if>
+        <button onClick="{{ backToPhone }}" style="width:100%;margin-top:12px;padding:12px;border:0;background:transparent;color:#5b6774;font-size:15px;font-weight:600;cursor:pointer" style-hover="color:#1668b8">Numarayı değiştir</button>
+      </sc-if>
+
+      <sc-if value="{{ stepDone }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:20px 0">
+          <div style="width:76px;height:76px;margin:0 auto;border-radius:999px;background:#1668b8;color:#fff;display:flex;align-items:center;justify-content:center">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4.5 4.5L19 7"></path></svg>
+          </div>
+          <div style="font-family:var(--font-heading);font-size:28px;color:#16181c;margin-top:20px">Hoş geldin!</div>
+          <p style="margin:10px 0 22px;font-size:16px;color:#5b6774">Hesabın hazır. 7 damgan seni bekliyor.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="hesabim.html" style="padding:14px 24px;border-radius:999px;background:#1668b8;color:#fff;font-family:var(--font-heading);font-size:16px" style-hover="background:#12579b">Hesabıma git</a>
+            <a href="siparis.html" style="padding:14px 24px;border-radius:999px;border:1.5px solid #dbe4ee;color:#16181c;font-family:var(--font-heading);font-size:16px" style-hover="background:#f4f7fb">Sipariş ver</a>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="height:1px;background:#eef3f8;margin:24px 0"></div>
+      <div style="text-align:center;font-size:15px;color:#5b6774">Üye olmadan da sipariş verebilirsin — <a href="siparis.html" style="font-weight:700">misafir siparişi</a></div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFoot" hint-size="100%,420px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:880}}">
+class Component extends DCLogic {
+  state = { mode: "giris", step: "phone", phone: "", name: "", code: "", err: false };
+  renderVals() {
+    const s = this.state;
+    const isSignup = s.mode === "kayit";
+    const ok = s.phone.replace(/\D/g, "").length >= 10 && (!isSignup || s.name.trim().length > 1);
+    return {
+      modes: [["giris", "Giriş"], ["kayit", "Kayıt"]].map(([k, label]) => ({
+        label, on: s.mode === k, off: s.mode !== k, pick: () => this.setState({ mode: k, step: "phone", err: false }),
+      })),
+      isSignup,
+      title: isSignup ? "Hesap aç" : "Tekrar hoş geldin",
+      subtitle: isSignup ? "Adın ve numaran yeterli." : "Numaranı yaz, kodu gönderelim.",
+      phone: s.phone, name: s.name, code: s.code,
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onName: e => this.setState({ name: e.target.value }),
+      onCode: e => this.setState({ code: e.target.value, err: false }),
+      canSend: ok, cannotSend: !ok,
+      sendCode: () => this.setState({ step: "code" }),
+      verify: () => s.code.replace(/\D/g, "").length === 4 ? this.setState({ step: "done" }) : this.setState({ err: true }),
+      backToPhone: () => this.setState({ step: "phone", code: "", err: false }),
+      stepPhone: s.step === "phone", stepCode: s.step === "code", stepDone: s.step === "done",
+      codeErr: s.err,
+    };
+  }
+}
+</script>
+</body>
+</html>
