@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc lang="tr">
+<helmet>
+<link rel="stylesheet" href="_ds/organic-19b78f37-1a36-475b-8c93-106949d4418d/styles.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Figtree:wght@400;500;600;700;800&amp;display=swap">
+<script src="_ds/organic-19b78f37-1a36-475b-8c93-106949d4418d/_ds_bundle.js"></script>
+<style>
+:root{--font-heading:"Archivo Black","Figtree",system-ui,sans-serif;--font-body:"Figtree",system-ui,sans-serif;--color-bg:#ffffff;--color-surface:#f4f7fb;--color-text:#16181c;--color-accent:#1668b8;--color-divider:color-mix(in srgb,#0e3f6e 14%,transparent);--color-accent-100:#eaf3fc;--color-accent-200:#cfe4f8;--color-accent-300:#9dc7ef;--color-accent-400:#4f95d4;--color-accent-500:#1668b8;--color-accent-600:#12579b;--color-accent-700:#0e4577;--color-accent-800:#0a3157;--color-accent-900:#07223d}
+body{margin:0;background:#fff;color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--color-accent);text-decoration:none}
+a:hover{color:var(--color-accent-700)}
+</style>
+</helmet>
+<header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-divider)">
+  <div style="max-width:1200px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+    <a href="index.html" style="display:flex;align-items:center;flex:none">
+      <img src="uploads/logo.png" alt="Thick Slice" style="height:44px;width:auto">
+    </a>
+    <nav style="display:flex;align-items:center;gap:6px;margin-right:auto;flex-wrap:wrap">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+        <a href="{{ l.href }}" style="position:relative;display:block;padding:9px 12px;border-radius:999px;font-size:15px;font-weight:600;color:#16181c" style-hover="background:#f4f7fb;color:#0e4577">
+          {{ l.label }}
+          <sc-if value="{{ l.on }}" hint-placeholder-val="{{ false }}">
+            <span style="position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:999px;background:#1668b8"></span>
+          </sc-if>
+        </a>
+      </sc-for>
+    </nav>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <a href="siparis-takip.html" style="display:flex;align-items:center;gap:7px;padding:9px 14px;border-radius:999px;font-size:14px;font-weight:600;color:#0e4577" style-hover="background:#eaf3fc">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg>
+        Sipariş Takip
+      </a>
+      <sc-if value="{{ loggedOut }}" hint-placeholder-val="{{ true }}">
+        <a href="giris.html" style="display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:#16181c;border:1.5px solid #dbe4ee;background:#fff" style-hover="background:#f4f7fb;border-color:#9dc7ef">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5.5 20c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5"></path></svg>
+          Giriş
+        </a>
+      </sc-if>
+      <sc-if value="{{ loggedIn }}" hint-placeholder-val="{{ false }}">
+        <a href="hesabim.html" style="display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:#16181c;border:1.5px solid #dbe4ee;background:#fff" style-hover="background:#f4f7fb;border-color:#9dc7ef">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5.5 20c0-3.3 2.9-5.5 6.5-5.5s6.5 2.2 6.5 5.5"></path></svg>
+          Hesabım
+        </a>
+      </sc-if>
+      <a href="sepet.html" style="position:relative;display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:999px;font-size:14px;font-weight:700;color:#16181c;border:1.5px solid #dbe4ee;background:#fff" style-hover="background:#f4f7fb;border-color:#9dc7ef">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l-1.4 12H5.4L4 7Z"></path><path d="M9 7V5.5a3 3 0 0 1 6 0V7"></path></svg>
+        Sepet
+        <span style="min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:#1668b8;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ cartCount }}</span>
+      </a>
+      <a href="siparis.html" style="display:flex;align-items:center;gap:8px;padding:11px 22px;border-radius:999px;font-size:15px;font-family:var(--font-heading);background:#1668b8;color:#fff;box-shadow:0 2px 0 #0e4577" style-hover="background:#12579b">
+        Sipariş Ver
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13"></path><path d="M12.5 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:90},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;menu&quot;,&quot;kampanyalar&quot;,&quot;hakkimizda&quot;,&quot;iletisim&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;cartCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:2,&quot;tsType&quot;:&quot;number&quot;},&quot;loggedIn&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active ?? "";
+    const defs = [
+      ["Menü", "menu.html", "menu"],
+      ["Kampanyalar", "kampanyalar.html", "kampanyalar"],
+      ["Şubeler", "subeler.html", "hakkimizda"],
+      ["İletişim", "iletisim.html", "iletisim"],
+    ];
+    const logged = this.props.loggedIn ?? false;
+    return {
+      loggedIn: logged, loggedOut: !logged,
+      cartCount: this.props.cartCount ?? 2,
+      links: defs.map(([label, href, key]) => ({ label, href, on: active === key })),
+    };
+  }
+}
+</script>
+</body>
+</html>
